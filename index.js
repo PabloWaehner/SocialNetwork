@@ -14,7 +14,8 @@ const path = require("path");
 const multer = require("multer");
 
 const server = require("http").Server(app); //////////////
-const io = require("socket.io")(server, { origins: "localhost:8080" }); ///////////
+const io = require("socket.io")(server, { origins: "localhost:3000" }); ///////////
+// const io = require("socket.io")(server, { origins: "localhost:8080" }); ///////////
 
 const cookieSessionMiddleware = cookieSession({
   ///////////
