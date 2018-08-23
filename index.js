@@ -203,8 +203,7 @@ app.get("/user", (req, res) => {
       console.log("user2: ", data);
       res.json({
         ...data,
-        image: "/default.png"
-        // image: data.image || "/default.png"
+        image: data.image || "/default.png"
       });
       // res.json(data);
     })
