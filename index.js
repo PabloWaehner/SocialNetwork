@@ -14,8 +14,7 @@ const path = require("path");
 const multer = require("multer");
 
 const server = require("http").Server(app); //////////////
-const io = require("socket.io")(server, { origins: "localhost:3000" }); ///////////
-// const io = require("socket.io")(server, { origins: "localhost:8080" }); ///////////
+const io = require("socket.io")(server, { origins: "localhost:8080" }); ///////////
 
 const cookieSessionMiddleware = cookieSession({
   ///////////
@@ -379,9 +378,6 @@ io.on("connection", function(socket) {
   });
 });
 
-server.listen(process.env.PORT || 3000, () =>
-  ca.rainbow("listening on port 3000")
+server.listen(process.env.PORT || 8080, () =>
+  ca.rainbow("listening on port 8080")
 ); // it's server, not app, that does the listening
-// server.listen(process.env.PORT || 8080, () =>
-//   ca.rainbow("listening on port 8080")
-// ); // it's server, not app, that does the listening
