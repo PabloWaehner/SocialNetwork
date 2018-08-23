@@ -183,13 +183,13 @@ app.get("/logout", (req, res) => {
 });
 
 app.post("/upload", uploader.single("file"), (req, res) => {
-// app.post("/upload", (req, res) => {
-// app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
+  // app.post("/upload", (req, res) => {
+  // app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
   console.log("the file is: ", req.file);
   db.updateUserImage(req.session.userID, req.file.filename)
-  // db.updateUserImage(req.session.userID, config.s3Url + req.file.filename)
-    .then((results) => {
-        console.log("req.file: ", results);
+    // db.updateUserImage(req.session.userID, config.s3Url + req.file.filename)
+    .then(results => {
+      console.log("req.file: ", results);
       res.json({
         url: req.file.filename,
         // url: config.s3Url + req.file.filename,
@@ -378,6 +378,9 @@ io.on("connection", function(socket) {
   });
 });
 
-server.listen(process.env.PORT || 8080, () =>
-  ca.rainbow("listening on port 8080")
+server.listen(process.env.PORT || 3000, () =>
+  ca.rainbow("listening on port 3000")
 ); // it's server, not app, that does the listening
+// server.listen(process.env.PORT || 8080, () =>
+//   ca.rainbow("listening on port 8080")
+// ); // it's server, not app, that does the listening
