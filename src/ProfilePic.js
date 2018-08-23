@@ -2,7 +2,7 @@ import React from "react";
 
 //stateless functional component
 function ProfilePic(props) {
-  console.log("profile pic: ", props);
+  console.log("profile pic ProfilePic.js: ", props);
   return (
     <div>
       <img

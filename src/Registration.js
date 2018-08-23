@@ -65,7 +65,7 @@ class Registration extends Component {
                                 <input
                                     onChange={this.handleChange}
                                     name="lastname"
-                                    placeholder="Lastname"
+                                    placeholder="Last name"
                                     type="text"
                                 />
                             </div>

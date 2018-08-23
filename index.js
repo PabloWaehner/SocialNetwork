@@ -8,7 +8,7 @@ const cookieSession = require("cookie-session");
 const cookieParser = require("cookie-parser");
 const csurf = require("csurf");
 const uidSafe = require("uid-safe");
-const s3 = require("./s3");
+// const s3 = require("./s3");
 const config = require("./config");
 const path = require("path");
 const multer = require("multer");
@@ -61,6 +61,7 @@ app.use(bodyParser.json());
 // );
 app.use(cookieParser());
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 
 app.use(compression());
 //
@@ -181,12 +182,17 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
-  console.log("the file is: ", req.file.filename);
-  db.updateUserImage(req.session.userID, config.s3Url + req.file.filename)
-    .then(() => {
+app.post("/upload", uploader.single("file"), (req, res) => {
+// app.post("/upload", (req, res) => {
+// app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
+  console.log("the file is: ", req.file);
+  db.updateUserImage(req.session.userID, req.file.filename)
+  // db.updateUserImage(req.session.userID, config.s3Url + req.file.filename)
+    .then((results) => {
+        console.log("req.file: ", results);
       res.json({
-        url: config.s3Url + req.file.filename,
+        url: req.file.filename,
+        // url: config.s3Url + req.file.filename,
         success: true
       });
     })
