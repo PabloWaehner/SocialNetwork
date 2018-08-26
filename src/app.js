@@ -44,7 +44,8 @@ export default class App extends React.Component {
         id: data.id,
         firstname: data.first_name,
         lastname: data.last_name,
-        image: data.image || "default.png",
+        image: "default.png",
+        // image: data.image || "default.png",
         bio: data.bio
       });
     });

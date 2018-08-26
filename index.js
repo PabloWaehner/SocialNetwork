@@ -16,7 +16,8 @@ const multer = require("multer");
 const server = require("http").Server(app); //////////////
 const io = require("socket.io")(server, {
   origins: "localhost:8080 pablowaehnersocialnetwork.herokuapp.com:*"
-}); ///////////
+}); /////////// to deploy the socket.io part in heroku
+// const io = require("socket.io")(server, { origins: "localhost:8080" }); ///////////
 
 const cookieSessionMiddleware = cookieSession({
   ///////////
