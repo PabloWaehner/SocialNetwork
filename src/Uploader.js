@@ -17,7 +17,9 @@ class Uploader extends Component {
   upload() {
     var self = this;
     var formData = new FormData();
+    console.log("this.state.imageFile.name: ", this.state.imageFile.name);
     console.log("imageFile: ", this.state.imageFile);
+    console.log("imageName: ", this.state.imageName);
     if (this.state.imageFile == "") {
       this.setState({
         error: "Select an image to upload"
